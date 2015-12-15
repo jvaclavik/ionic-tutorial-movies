@@ -1,0 +1,21 @@
+<ion-view title="Seznam filmů" id="movies">
+    <ion-content>
+        <form ng-submit="search(searchString)">
+            <div class="bar item-input-inset bar-search">
+                <label class="item-input-wrapper">
+                    <i class="icon ion-ios-search"></i>
+                    <input type="search" ng-model="searchString" placeholder="Vyhledat">
+                </label>
+                <button class="button button-clear" type="submit">
+                    <i class="icon ion-ios-search"></i>
+                </button>
+            </div>
+        </form>
+
+        <ul class="list">
+            <li ng-if="!data.movies" class="item text-center">Zadejte vyhledávací frázi</li>
+            <li ng-if="data.movies.length == 0" class="item text-center">Nic nenalezeno</li>
+            <li class="item" ng-repeat="movie in data.movies" ui-sref="movie-detail({'id': movie.imdbID})">{{movie.Title}}</li>
+        </ul>
+    </ion-content>
+</ion-view>
